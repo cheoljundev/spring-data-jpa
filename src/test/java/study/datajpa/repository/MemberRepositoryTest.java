@@ -25,6 +25,7 @@ import static org.assertj.core.api.Assertions.*;
 class MemberRepositoryTest {
     @Autowired MemberRepository memberRepository;
     @Autowired TeamRepository teamRepository;
+    @Autowired MemberQueryRepository memberQueryRepository;
     @PersistenceContext
     EntityManager em;
 
@@ -285,5 +286,10 @@ class MemberRepositoryTest {
         List<Member> result = memberRepository.findLockByUsername("member1");
 
         //then
+    }
+
+    @Test
+    public void callCustom() {
+        List<Member> memberCustom = memberRepository.findMemberCustom();
     }
 }
